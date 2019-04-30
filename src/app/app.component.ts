@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment.prod.js';
 
 export interface Users {
   value: any;
-  viewValue: String;
+  viewValue: string;
 }
 
 
