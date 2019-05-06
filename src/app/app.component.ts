@@ -38,7 +38,8 @@ export class AppComponent {
       messagingSenderId: "882512572300"
     }
   );
-  myRef;
+  myRef = ()=> {
+    return this.app.database().ref('userArray')}
 
   selectedUserW105030 = {value: 0, viewValue: 'Free'};
   selectedUserW105031 = {value: 0, viewValue: 'Free'};
@@ -66,7 +67,7 @@ export class AppComponent {
    ngOnInit(): void {
     let result,
         counter = 0;
-    this.app.database().ref('userArray').once('value').then(
+    this.myRef().once('value').then(
       (data) => {
                   result = data.val();
                   for (let key in result) {
@@ -85,8 +86,7 @@ export class AppComponent {
       console.log(this.userArray[counter]);
       counter++;
     }
-    //let body = JSON.stringify(mockup);
-    this.app.database().ref('userArray').update(mockup);
+    this.myRef().update(mockup);
   }
 
 }
