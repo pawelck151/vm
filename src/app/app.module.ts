@@ -13,6 +13,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+import { CronJobsModule } from 'ngx-cron-jobs';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    CronJobsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

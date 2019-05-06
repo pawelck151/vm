@@ -28,7 +28,9 @@
     "firebase-admin": "^7.3.0",
     "ng2-cookies": "^1.0.12",
     "ngx-cookie": "^4.1.2",
+    "ngx-cron-jobs": "^0.4.9",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.5.1",
     "tslib": "^1.9.0",
     "write-file": "^1.0.0",
     "zone.js": "~0.8.26"

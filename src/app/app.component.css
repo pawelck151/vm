@@ -61,3 +61,10 @@ label{
   background: #61b361;
   height: -webkit-fill-available
 }
+.btn-success{
+  border-color: white;
+  border: 1px solid;
+  margin: auto;
+  display: block;
+  font-size: 1.25em
+}
