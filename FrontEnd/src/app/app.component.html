@@ -1,0 +1,109 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+<div class="all">
+<div style="text-align:center" class="container-fluid pt-md-2 pt-lg-3 in-viewport">
+  <h1>
+    {{ appTitle }}
+  </h1>
+  <img width="100" alt="virtualizationLogo" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Virtualbox_logo.png">
+</div>
+<div class="list">
+  <ul id ="win10list" class = "list-group">
+    <li class="list-group-item list-group-item-success">
+            <label>&nbsp;</label><label>&nbsp;</label>
+            <img width="30" alt="win10Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG23.png">
+            <label>&nbsp;</label><label>&nbsp;</label><label>&nbsp;</label>
+            <label>Windows 10 Port:5030 </label>
+            <label>&nbsp;</label>
+            <select class="custom-select" [(ngModel)]="userArray[0]" (change)= "selected()">
+              <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+            </select><div *ngIf="userArray[0].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[0].viewValue == 'Blocked' then greyCircle"></div>
+    </li>
+    <li class = "list-group-item list-group-item-success">
+        <label>&nbsp;</label><label>&nbsp;</label>
+        <img width="30" alt="win10Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG23.png">
+        <label>&nbsp;</label><label>&nbsp;</label><label>&nbsp;</label>
+        <label>Windows 10 Port:5031 </label>
+        <label>&nbsp;</label>
+        <select class="custom-select" [(ngModel)]="userArray[1]" (change)= "selected()">
+          <option *ngFor="let item of users" [ngValue]="item" >{{item.viewValue}}</option>
+        </select><div *ngIf="userArray[1].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[1].viewValue == 'Blocked' then greyCircle"></div>
+    </li>
+    <li class = "list-group-item list-group-item-success">
+        <label>&nbsp;</label><label>&nbsp;</label>
+        <img width="30" alt="win10Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG23.png">
+        <label>&nbsp;</label><label>&nbsp;</label><label>&nbsp;</label>
+        <label>Windows 10 Port:5032 </label>
+        <label>&nbsp;</label>
+        <select class="custom-select" [(ngModel)]="userArray[2]" (change)= "selected()">
+          <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+
+        </select><div *ngIf="userArray[2].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[2].viewValue == 'Blocked' then greyCircle"></div>
+    </li>
+  </ul>
+</div>
+<div class="list">
+  <ul id ="win7list" class = "list-group">
+    <li class = "list-group-item list-group-item-success">
+          <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
+          <label>Windows 7 Port:8000 </label>
+          <label>&nbsp;</label>
+          <select class="custom-select" [(ngModel)]="userArray[3]" (change)= "selected()">
+            <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+          </select><div *ngIf="userArray[3].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[3].viewValue == 'Blocked' then greyCircle"></div>
+    </li>
+    <li class = "list-group-item list-group-item-success">
+            <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
+            <label>Windows 7 Port:8001 </label>
+            <label>&nbsp;</label>
+            <select class="custom-select" [(ngModel)]="userArray[4]" (change)= "selected()">
+              <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+            </select><div *ngIf="userArray[4].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[4].viewValue == 'Blocked' then greyCircle"></div>
+    </li>
+    <li class = "list-group-item list-group-item-success">
+            <img width="50" alt="win7Logo" src="http://pngimg.com/uploads/windows_logos/windows_logos_PNG37.png">
+            <label>Windows 7 Port:8002 </label>
+            <label>&nbsp;</label>
+            <select class="custom-select" [(ngModel)]="userArray[5]" (change)= "selected()">
+              <option *ngFor="let item of users" [ngValue]="item">{{item.viewValue}}</option>
+            </select><div *ngIf="userArray[5].viewValue == 'Free' then greenCircle else redCircle"></div><div *ngIf="userArray[5].viewValue == 'Blocked' then greyCircle"></div>
+    </li>
+  </ul>
+  <label>&nbsp;</label>
+  <button class= "btn btn-success">Check Machines state</button>
+</div>
+<div class="footer blockquote-footer">
+  <label style="float: left">-Made by Pawel Wojtak, Krystian Stemplewski, Michal Lawicki-</label>
+  <label style="float: right"> Virtual machines version : {{version}}</label>
+</div>
+</div>
+
+<router-outlet></router-outlet>
+
+
+<ng-template #redCircle>&nbsp;<div class='circle red circle_inline'></div></ng-template>
+<ng-template #greenCircle>&nbsp;<div class='circle green circle_inline'></div></ng-template>
+<ng-template #greyCircle>&nbsp;<div class='circle grey circle_inline'></div></ng-template>
+<<ng-template #blocked><div class='blockedCheckBox'></div></ng-template>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCAq9MvI4s-cfRPRDpDuItn_AKxtAv40Pw",
+    authDomain: "vmmanager-fabbf.firebaseapp.com",
+    databaseURL: "https://vmmanager-fabbf.firebaseio.com",
+    projectId: "vmmanager-fabbf",
+    storageBucket: "vmmanager-fabbf.appspot.com",
+    messagingSenderId: "882512572300"
+  };
+  firebase.initializeApp(config);
+</script>
+
