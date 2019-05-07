@@ -10,6 +10,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 import { environment } from 'src/environments/environment.prod.js';
+import { checkAndUpdateBinding } from '@angular/core/src/view/util';
 
 export interface Users {
   value: any;
@@ -28,6 +29,7 @@ export class AppComponent {
   version = 'V01.00.38';
   jsonPath = '../assets/data/settings.json';
   jsonName = 'settings.json';
+  isChecked : boolean = false;
   app:firebase.app.App = firebase.initializeApp(
     {
       apiKey: "AIzaSyCAq9MvI4s-cfRPRDpDuItn_AKxtAv40Pw",
@@ -47,8 +49,6 @@ export class AppComponent {
   selectedUserW78000 = {value: 0, viewValue: 'Free'};
   selectedUserW78001 = {value: 0, viewValue: 'Free'};
   selectedUserW78002 = {value: 0, viewValue: 'Free'};
-
-
 
   userArray = [this.selectedUserW105030, this.selectedUserW105031, this.selectedUserW105032, this.selectedUserW78000, this.selectedUserW78001, this.selectedUserW78002];
 
@@ -72,21 +72,20 @@ export class AppComponent {
                   result = data.val();
                   for (let key in result) {
                                             this.userArray[counter] = this.users[result[key]]
-                                            console.log(`KEY READ : ${ key }, \nRESULT [KEY] ${ result[key]} \nVIEW VALUE ${this.users[result[key]]}`);
                                             counter++;
                                           }
     });
-
    }
    selected(){
     let mockup = json,
         counter = 0;
     for (let key in json) {
       json[key] = this.userArray[counter].value;
-      console.log(this.userArray[counter]);
       counter++;
     }
     this.myRef().update(mockup);
   }
+
+  idCbArray = ['cb5030', 'cb5031', 'cb5032', 'cb8000', 'cb8001', 'cb8002'];
 
 }
