@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { DefaultValueAccessor } from '@angular/forms';
@@ -11,6 +11,9 @@ import 'firebase/firestore';
 import 'firebase/database';
 import { environment } from 'src/environments/environment.prod.js';
 import { checkAndUpdateBinding } from '@angular/core/src/view/util';
+// import * as $ from 'jquery';
+import { TestService } from 'src/app/services/test.services';
+import { Observable } from 'rxjs';
 
 export interface Users {
   value: any;
@@ -23,13 +26,16 @@ export interface Users {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'vm-app';
   appTitle = 'Virtual Machine Manager';
   version = 'V01.00.38';
   jsonPath = '../assets/data/settings.json';
   jsonName = 'settings.json';
   isChecked : boolean = false;
+  testMessage$: Observable<string>;
+  constructor(private testService: TestService) { }
+
   app:firebase.app.App = firebase.initializeApp(
     {
       apiKey: "AIzaSyCAq9MvI4s-cfRPRDpDuItn_AKxtAv40Pw",
@@ -63,8 +69,8 @@ export class AppComponent {
     {value: 7, viewValue: 'Krystian'},
     {value: 8, viewValue: 'Blocked'}
   ]
-   constructor (private httpClient : HttpClient){}
-   ngOnInit(): void {
+   ngOnInit() : void {
+    // this.getTestMessage();
     let result,
         counter = 0;
     this.myRef().once('value').then(
@@ -75,7 +81,9 @@ export class AppComponent {
                                             counter++;
                                           }
     });
-   }
+      // this.getTestMessage () {
+      // this.testService.getTestMessage().subscribe(data => console.log(data));
+  }
    selected(){
     let mockup = json,
         counter = 0;
@@ -85,7 +93,21 @@ export class AppComponent {
     }
     this.myRef().update(mockup);
   }
+  checkMachineState(){
+    let url = "http://localhost:5000/api/values";
+    fetch(url)
+      .then(response => console.log(response.text()))
+      .catch((error)=>console.log(error));
 
-  idCbArray = ['cb5030', 'cb5031', 'cb5032', 'cb8000', 'cb8001', 'cb8002'];
-
+    //  $.get("https://localhost:5001/api/values", (data)=>{
+    //   console.log(data)
+    //  let mockup ,
+    //       counter = 0;
+    //   for (let key in json) {
+    //       json[key] = this.userArray[counter].value;
+    //       counter++;
+    //   }
+    //   this.myRef().update(mockup);
+  // } )
+}
 }

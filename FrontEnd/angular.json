@@ -25,7 +25,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": ["C:/Users/Maulburg/Documents/publish/vm/FrontEnd/node_modules/jquery/dist/jquery.min.js"],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -58,7 +58,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "vm-app:build"
+            "browserTarget": "vm-app:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

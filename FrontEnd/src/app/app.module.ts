@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire'
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { CronJobsModule } from 'ngx-cron-jobs';
+import { TestService } from 'src/app/services/test.services';
+
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { CronJobsModule } from 'ngx-cron-jobs';
     AngularFireDatabaseModule,
     CronJobsModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
